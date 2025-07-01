@@ -1,18 +1,15 @@
 import { PageTemplate } from "../template/PageTemplate.js";
 import { pageTitle } from "../ui/pageTitle.js";
 import { placeholder } from "../ui/placeholder.js";
+import { categoriesList } from "../ui/categoriesList.js";
+import { categoriesData } from "../data/categoriesData.js";
 
 export class PageCategories extends PageTemplate {
   main() {
     return `
         <main>
           ${pageTitle('Categories')}
-          ${placeholder('Categories list', [
-      'Pavadinimas',
-      'Trumpas aprasas',
-      'Filmu kiekis toje kategorijoje',
-      'Nuoroda i vidini puslapi',
-    ])}
+          ${categoriesList(categoriesData)}
         </main>
         `
   }
