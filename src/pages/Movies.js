@@ -1,30 +1,16 @@
 import { PageTemplate } from "../template/PageTemplate.js";
+import { moviesListSection } from "../ui/moviesList.js";
 import { pageTitle } from "../ui/pageTitle.js";
-import { placeholder } from "../ui/placeholder.js";
+import { moviesData } from "../data/moviesData.js";
+import { moviesFilterForm } from "../ui/forms/moviesFilterForm.js";
 
 export class PageMovies extends PageTemplate {
   main() {
     return `
-        <main class="container">
-          ${pageTitle('Movies')}
-          ${placeholder('Filter', [
-      'Filtravimas pagal:',
-      'Tekstine paieska is pavadinimo ir apraso',
-      'Pagal trukme',
-      'Pagal kategorija',
-      'Ivertinimas',
-    ])}
-          ${placeholder('Movie list', [
-      'Korteliu saras',
-      'Nuotrauka',
-      'Pavadinimas',
-      'Trumpas aprasas',
-      'Trukme',
-      'Ivertinimas (zvaigzdutes)',
-      'Nuorode i vidini puslapi',
-      'Filmo kategorija',
-    ])}
-        </main>
-        `
+            <main>
+                ${pageTitle('Movies')}
+                ${moviesFilterForm()}
+                ${moviesListSection(moviesData)}
+            </main>`;
   }
 }
