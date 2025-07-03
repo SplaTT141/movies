@@ -29,7 +29,7 @@ export async function postRegister(req, res) {
         console.log(error);
     }
 
-    console.log(req.body);
+    // console.log(req.body);
 
     return res.json({
         status: 'success',
