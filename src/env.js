@@ -17,8 +17,6 @@ const a = dotenv.config({
     quiet: true,
 });
 
-console.log(a);
-
 export const PORT = +process.env.PORT ?? 5517;
 export const TITLE = process.env.TITLE ?? 'Project title';
 export const DB_HOST = process.env.DB_HOST ?? 'localhost';

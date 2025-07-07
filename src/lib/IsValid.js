@@ -6,7 +6,7 @@ export class IsValid {
         const dataKeysCount = Object.keys(data).length;
 
         if (dataKeysCount !== requiredKeysCount) {
-            return [true, 'Atejusiuose duomenyse duomenu keikis nesutampa su reikalaujamu duomenu apimtimi'];
+            return [true, 'Atejusiuose duomenyse duomenu kiekis nesutampa su reikalaujamu duomenu apimtimi'];
         }
 
         for (const key in schema) {
@@ -78,19 +78,50 @@ export class IsValid {
         return [false, ''];
     }
 
+    static age(number) {
+        const min = 18;
+        const max = 130;
+
+        if (typeof number !== 'number' || !Number.isInteger(number) || number < 0) {
+            return [true, 'Amzius turi buti teigiamas sveikasis skaicius'];
+        }
+
+        if (number < min) {
+            return [true, `Amzius turi tureti ne mazesnis nei ${min} metu`];
+        }
+
+        if (number > max) {
+            return [true, `Amzius turi tureti ne didesnis nei ${max} metu`];
+        }
+
+        return [false, ''];
+    }
+
     static email(text) {
         return [false, ''];
-    };
+    }
+
+    static nonEmptyString(text) {
+        if (typeof text !== 'string') {
+            return [true, 'Turi buti tekstas'];
+        }
+
+        if (text.length === 0) {
+            return [true, 'Tekstas turi buti ne tuscias'];
+        }
+
+        return [false, ''];
+    }
 
     static tos(text) {
         if (typeof text !== 'string') {
-            return [true, 'Sutikimas su taisyklemis turi buto teksto tipo.'];
+            return [true, 'Sutikimas su taisyklemis turi buti teksto tipo.'];
         }
 
         if (text !== 'agree') {
-            return [true, `Sutikimas turi buti naudojant zodi "agree"`];
+            return [true, 'Sutikimas turi buti naudojant zodi "agree".'];
         }
 
         return [false, ''];
-    };
+    }
 }
