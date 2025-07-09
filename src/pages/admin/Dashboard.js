@@ -9,7 +9,7 @@ export class PageDashboard extends AdminTemplate {
                    <div class="container">
                         <div class="row">
                             <div class="col-lg-12">
-                                <h1 class="h1">403 - eik prisijungti</h1>
+                                <h1 class="h1">403 - PRISIJUNK!</h1>
                             </div>
                         </div>
                     </div>

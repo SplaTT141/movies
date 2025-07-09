@@ -11,13 +11,12 @@ const app = express();
 
 app.use(express.static('public'));
 app.use(express.json());
-
 app.use(cookieParser);
 app.use(userData);
 
 app.use('/', publicPageRouter);
 app.use('/', publicApiRouter);
-app.use('/', adminPageRouter);
+app.use('/admin', adminPageRouter);
 
 app.get('*error', (req, res) => {
     return res.send(new Error404(req).render());
