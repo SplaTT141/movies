@@ -1,4 +1,4 @@
-import { commonHeaderData } from "../data/headerData.js";
+import { commonHeaderMenuData } from "../data/headerData.js";
 
 export class PageTemplate {
   constructor(req) {
@@ -7,26 +7,25 @@ export class PageTemplate {
   }
 
   head() {
-    return `  
-      <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Document</title>
-        <link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
-        <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
-        <link rel="shortcut icon" href="favicon.ico" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
-        <meta name="apple-mobile-web-app-title" content="" />
-        <link rel="manifest" href="/favicon/site.webmanifest" />
-        <link rel="stylesheet" href="/css/bootstrap.min.css">
-      </head>
-        `;
+    return `
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>Express example</title>
+                <link rel="shortcut icon" href="/favicon.ico" />
+                <link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
+                <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
+                <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+                <meta name="apple-mobile-web-app-title" content="Coming soon" />
+                <link rel="manifest" href="/favicon/site.webmanifest" />
+                <link rel="stylesheet" href="/css/bootstrap.min.css">
+            </head>`;
   }
 
   header() {
     let HTML = '';
 
-    for (const link of commonHeaderData) {
+    for (const link of commonHeaderMenuData) {
       HTML += `
                 <li>
                     <a href="${link.href}" class="nav-link px-2">${link.text}</a>
@@ -45,43 +44,44 @@ export class PageTemplate {
                         </a>
                     </div>
                     <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">${HTML}</ul>
-                    <div class="col-md-3 text-end">
-                        <a href="/login" class="btn btn-outline-primary me-2">Login</a>
-                        <a href="/register" class="btn btn-primary">Register</a>
-                    </div>
+                    ${this.userMenu()}
                 </header>
             </div>`;
   }
 
-  main() {
+  userMenu() {
+
+    if (this.req.user.isLoggedIn) {
+      return `
+                <div class="col-md-3 text-end">
+                    <a href="/admin" class="btn btn-primary">Dashboard</a>
+                </div>`;
+    }
+
     return `
-        <main class="container">
-          <div class="row">
-            <div class="col-12">
-            </div>
-          </div>
-        </main>
-        `
+            <div class="col-md-3 text-end">
+                <a href="/login" class="btn btn-outline-primary me-2">Login</a>
+                <a href="/register" class="btn btn-primary">Register</a>
+            </div>`;
   }
 
   footer() {
     let HTML = '';
 
-    for (const link of commonHeaderData) {
-      HTML += `        
-      <li class="nav-item">
-          <a href="${link.href}" class="nav-link px-2 text-body-primary">${link.text}</a>
-      </li>`;
+    for (const link of commonHeaderMenuData) {
+      HTML += `
+                <li class="nav-item">
+                    <a href="${link.href}" class="nav-link px-2 text-body-secondary">${link.text}</a>
+                </li>`;
     }
 
     return `
-    <footer class="container d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
-      <p class="col-md-4 mb-0 text-body-secondary">© 2025 Company, Inc</p>
-      <ul class="nav col-md-4 justify-content-end">
-        ${HTML}
-      </ul>
-    </footer>
-`;
+            <div class="container">
+                <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+                    <p class="col-md-4 mb-0 text-body-secondary">&copy; 2025 Company, Inc</p>
+                    <ul class="nav col-md-4 justify-content-end">${HTML}</ul>
+                </footer>
+            </div>`;
   }
 
   script() {
@@ -92,17 +92,28 @@ export class PageTemplate {
     return `<script src="/js/${this.pageJS}.js" type="module"></script>`;
   }
 
+  main() {
+    return `
+            <main class="container">
+                <div class="row">
+                    <div class="col-12">
+                        TEMPLATE PAGE CONTENT
+                    </div>
+                </div>
+            </main>`;
+  }
+
   render() {
     return `
-    <!DOCTYPE html>
-    <html lang="en">
-    ${this.head()}
-      <body">
-        ${this.header()}
-        ${this.main()}
-        ${this.footer()}
-        ${this.script()}
-      </body>
-    </html>`;
+            <!DOCTYPE html>
+            <html lang="en">
+            ${this.head()}
+            <body>
+                ${this.header()}
+                ${this.main()}
+                ${this.footer()}
+                ${this.script()}
+            </body>
+            </html>`;
   }
 }

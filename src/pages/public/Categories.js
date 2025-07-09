@@ -1,16 +1,18 @@
-import { PageTemplate } from "../../template/PageTemplate.js";
-import { pageTitle } from "../../ui/pageTitle.js";
-import { placeholder } from "../../ui/placeholder.js";
-import { categoriesList } from "../../ui/categoriesList.js";
 import { categoriesData } from "../../data/categoriesData.js";
+import { PageTemplate } from "../../template/PageTemplate.js";
+import { categoriesListSection } from "../../ui/categoriesList.js";
+import { pageTitle } from "../../ui/pageTitle.js";
 
 export class PageCategories extends PageTemplate {
+  constructor(req) {
+    super(req);
+  }
+
   main() {
     return `
-        <main>
-          ${pageTitle('Categories')}
-          ${categoriesList(categoriesData)}
-        </main>
-        `
+            <main>
+                ${pageTitle('Categories')}
+                ${categoriesListSection(categoriesData)}
+            </main>`;
   }
 }

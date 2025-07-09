@@ -2,11 +2,14 @@ import { PageTemplate } from "../../template/PageTemplate.js";
 import { heroSection } from "../../ui/hero.js";
 
 export class PageHome extends PageTemplate {
+    constructor(req) {
+        super(req);
+    }
+
     main() {
         return `
-        <main>
-            ${heroSection()}
-        </main>
-        `;
+            <main>
+                ${heroSection()}
+            </main>`;
     }
 }

@@ -1,10 +1,14 @@
+import { moviesData } from "../../data/moviesData.js";
 import { PageTemplate } from "../../template/PageTemplate.js";
+import { moviesFilterForm } from "../../ui/forms/moviesFilterForm.js";
 import { moviesListSection } from "../../ui/moviesList.js";
 import { pageTitle } from "../../ui/pageTitle.js";
-import { moviesData } from "../../data/moviesData.js";
-import { moviesFilterForm } from "../../ui/forms/moviesFilterForm.js";
 
 export class PageMovies extends PageTemplate {
+  constructor(req) {
+    super(req);
+  }
+
   main() {
     return `
             <main>
