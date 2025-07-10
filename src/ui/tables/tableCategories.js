@@ -1,24 +1,24 @@
 export function tableCategories(data) {
-  let HTML = '';
-  let nr = 1;
+    let HTML = '';
+    let nr = 1;
 
-  for (const category of data) {
-    HTML += `
+    for (const category of data) {
+        HTML += `
             <tr>
                 <th scope="row">${nr++}</th>
                 <td><a href="/admin">${category.title}</a></td>
                 <td>${category.url}</td>
                 <td>${category.description}</td>
                 <td>${category.moviesCount}</td>
-                <td>${category.isPublished ? 'Published' : 'Draft'}</td>
+                <td>${category.isPublished ? '<span class="badge text-bg-success">Published</span>' : '<span class="badge text-bg-warning">Draft</span>'}</td>
                 <td>
                     <a class="btn btn-primary btn-sm" href="/admin">Edit</a>
                     <button class="btn btn-danger btn-sm">Delete</button>
                 </td>
             </tr>`;
-  }
+    }
 
-  return `
+    return `
         <table class="table table-striped">
             <thead>
                 <tr>

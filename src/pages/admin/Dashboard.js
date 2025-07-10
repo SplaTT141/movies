@@ -3,19 +3,6 @@ import { AdminTemplate } from "../../template/AdminTemplate.js";
 
 export class PageDashboard extends AdminTemplate {
     main() {
-        if (!this.req.user.isLoggedIn) {
-            return `
-                <main>
-                   <div class="container">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <h1 class="h1">403 - PRISIJUNK!</h1>
-                            </div>
-                        </div>
-                    </div>
-                </main>`;
-        }
-
         const cookie = this.req.user.login_token_created_at.getTime();
         const secondsLeft = Math.floor(COOKIE_MAX_AGE - (Date.now() - cookie) / 1000);
         const seconds = secondsLeft % 60;
@@ -25,7 +12,7 @@ export class PageDashboard extends AdminTemplate {
             <main>
                <div class="container">
                     <div class="row">
-                        <div class="col-lg-12">
+                        <div class="col-12">
                             <h1 class="display-1">Welcome to your dashboard!</h1>
                             <p class="display-6">Username: ${this.req.user.username}</p>
                             <p class="display-6">Email: ${this.req.user.email}</p>

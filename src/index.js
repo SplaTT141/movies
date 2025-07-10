@@ -7,6 +7,7 @@ import { adminPageRouter } from './route/adminPageRouter.js';
 import { cookieParser } from './middleware/cookieParser.js';
 import { userData } from './middleware/userData.js';
 import { isAdmin } from './middleware/isadmin.js';
+import { adminApiRouter } from './route/adminApiRouter.js';
 
 const app = express();
 
@@ -15,9 +16,15 @@ app.use(express.json());
 app.use(cookieParser);
 app.use(userData);
 
+app.use((err, req, res, next) => {
+    console.log(err);
+    return res.send('Server error');
+})
+
 app.use('/', publicPageRouter);
-app.use('/', publicApiRouter);
+app.use('/api', publicApiRouter);
 app.use('/admin', isAdmin, adminPageRouter);
+app.use('/api/admin', isAdmin, adminApiRouter);
 
 app.get('*error', (req, res) => {
     return res.send(new Error404(req).render());

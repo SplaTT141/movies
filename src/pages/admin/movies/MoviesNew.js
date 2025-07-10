@@ -6,8 +6,8 @@ export class PageAdminMoviesNew extends AdminTemplate {
             <main>
                <div class="container">
                     <div class="row">
-                        <div class="col-lg-12">
-                            <h1 class="display-1">New movie</h1>
+                        <div class="col-12">
+                            <h1 class="display-5">New movie</h1>
                         </div>
                     </div>
                 </div>

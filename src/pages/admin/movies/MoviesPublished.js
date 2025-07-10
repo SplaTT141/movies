@@ -6,8 +6,8 @@ export class PageAdminMoviesPublished extends AdminTemplate {
             <main>
                <div class="container">
                     <div class="row">
-                        <div class="col-lg-12">
-                            <h1 class="display-1">Published movies</h1>
+                        <div class="col-12">
+                            <h1 class="display-5">Published movies</h1>
                         </div>
                     </div>
                 </div>
