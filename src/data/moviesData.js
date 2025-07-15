@@ -33,7 +33,7 @@ export const moviesData = [
         title: 'Godfather',
         url: 'godfather',
         description: 'This is a wide with supporting text below as a natural lead-in to additional content.',
-        durationInMinutes: 103,
+        durationInMinutes: 175,
         category: 'Crime',
         img: '/img/godfather.jpg',
         releaseDate: '1972-03-27',
