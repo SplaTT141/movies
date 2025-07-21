@@ -16,14 +16,14 @@ if (formDOM) {
         };
 
         if (descriptionDOM.value) {
-            data.description = descriptionDOM.value
+            data.description = descriptionDOM.value;
         }
 
         if (statusPublishedDOM.checked) {
             data.status = 'published';
         }
 
-        fetch('/categories', {
+        fetch('/api/admin/categories', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
