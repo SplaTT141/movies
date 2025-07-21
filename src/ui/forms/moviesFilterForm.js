@@ -24,7 +24,6 @@ export function moviesFilterForm() {
                         <option value="1">Action</option>
                         <option value="2">Crime</option>
                         <option value="3">Comedy</option>
-                        <option value="4">Horror</option>
                     </select>
                 </div>
                 <div class="col-12 col-md-4 col-xl-2">

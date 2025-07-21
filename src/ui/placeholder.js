@@ -8,9 +8,8 @@ export function placeholder(title, list) {
     }
 
     return `
-    <div class="alert alert-primary alert-dismissible fade show" role="alert">
-        <h3>${title}</h3>
-        ${HTML ? `<ul>${HTML}</ul>` : ''}
-    </div>
-    `;
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <h3>${title}</h3>
+            ${HTML ? `<ul>${HTML}</ul>` : ''}
+        </div>`;
 }

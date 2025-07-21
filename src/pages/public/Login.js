@@ -1,4 +1,4 @@
-import { PageTemplate } from "../../template/PageTemplate.js";
+import { PageTemplate } from "../../templates/PageTemplate.js";
 import { loginForm } from "../../ui/forms/loginForm.js";
 import { pageTitle } from "../../ui/pageTitle.js";
 
@@ -7,7 +7,7 @@ export class PageLogin extends PageTemplate {
     super(req);
     this.pageJS = 'login';
   }
-  main() {
+  async main() {
     return `
             <main>
                 ${pageTitle('Login')}

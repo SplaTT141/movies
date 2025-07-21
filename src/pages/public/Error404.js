@@ -1,6 +1,6 @@
-import { PageTemplate } from "../../template/PageTemplate.js";
+import { PageTemplate } from "../../templates/PageTemplate.js";
 
-export class Error404 extends PageTemplate {
+export class PageError404 extends PageTemplate {
   constructor(req) {
     super(req);
   }

@@ -1,8 +1,13 @@
-import { getPublishedCategories } from "../../../db/getPublishedCategories.js";
-import { AdminTemplate } from "../../../template/AdminTemplate.js";
+import { getPublishedCategories } from "../../../db/admin/getPublishedCategories.js";
+import { AdminTemplate } from "../../../templates/AdminTemplate.js";
 import { tableCategories } from "../../../ui/tables/tableCategories.js";
 
 export class PageAdminCategoriesPublished extends AdminTemplate {
+    constructor(req) {
+        super(req);
+        this.pageJS = 'category-list';
+    }
+
     async main() {
         const data = await getPublishedCategories();
 

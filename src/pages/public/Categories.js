@@ -1,27 +1,20 @@
-import { getAllCategories } from "../../db/getAllCategories.js";
-import { AdminTemplate } from "../../template/AdminTemplate.js";
-import { tableCategories } from "../../ui/tables/tableCategories.js";
+import { getAllPublicCategories } from "../../db/public/getAllCategories.js";
+import { PageTemplate } from "../../templates/PageTemplate.js";
+import { categoriesListSection } from "../../ui/categoriesList.js";
+import { pageTitle } from "../../ui/pageTitle.js";
 
-export class PageCategories extends AdminTemplate {
+export class PageCategories extends PageTemplate {
+    constructor(req) {
+        super(req);
+    }
+
     async main() {
-        const data = await getAllCategories();
+        const data = await getAllPublicCategories();
 
         return `
             <main>
-               <div class="container">
-                    <div class="row">
-                        <div class="col-12">
-                            <h1 class="display-5">All categories</h1>
-                        </div>
-                    </div>
-                </div>
-               <div class="container">
-                    <div class="row">
-                        <div class="col-12">
-                            ${tableCategories(data)}
-                        </div>
-                    </div>
-                </div>
+                ${pageTitle('Categories')}
+                ${categoriesListSection(data)}
             </main>`;
     }
 }

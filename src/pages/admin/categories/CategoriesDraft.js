@@ -1,13 +1,15 @@
-import { getDraftCategories } from "../../../db/getDraftCategories.js";
-import { AdminTemplate } from "../../../template/AdminTemplate.js";
+import { getDraftCategories } from "../../../db/admin/getDraftCategories.js";
+import { AdminTemplate } from "../../../templates/AdminTemplate.js";
 import { tableCategories } from "../../../ui/tables/tableCategories.js";
 
 export class PageAdminCategoriesDraft extends AdminTemplate {
+    constructor(req) {
+        super(req);
+        this.pageJS = 'category-list';
+    }
+
     async main() {
         const data = await getDraftCategories();
-
-        console.log(data);
-
 
         return `
             <main>

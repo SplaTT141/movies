@@ -1,4 +1,4 @@
-import { AdminTemplate } from "../../../template/AdminTemplate.js";
+import { AdminTemplate } from "../../../templates/AdminTemplate.js";
 
 export class PageAdminCategoriesNew extends AdminTemplate {
     constructor(req) {

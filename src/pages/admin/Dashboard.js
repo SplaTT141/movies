@@ -1,5 +1,5 @@
 import { COOKIE_MAX_AGE } from "../../env.js";
-import { AdminTemplate } from "../../template/AdminTemplate.js";
+import { AdminTemplate } from "../../templates/AdminTemplate.js";
 
 export class PageDashboard extends AdminTemplate {
     main() {

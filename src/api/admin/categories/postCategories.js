@@ -1,5 +1,5 @@
-import { connection } from "../../db.js";
-import { IsValid } from "../../lib/IsValid.js";
+import { connection } from "../../../db.js";
+import { IsValid } from "../../../lib/IsValid.js";
 
 export async function postCategories(req, res) {
     const [err, msg] = IsValid.fields(req.body, {
@@ -41,7 +41,7 @@ export async function postCategories(req, res) {
         const sql = `
             INSERT INTO categories (title, url_slug, status_id, description)
             VALUES (?, ?, 
-                (SELECT id FROM category_status WHERE name = ?),
+                (SELECT id FROM general_status WHERE name = ?),
                 ?);`;
         const [response] = await connection.execute(sql, [title, url, status, description]);
 

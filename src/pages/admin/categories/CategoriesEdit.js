@@ -1,15 +1,28 @@
-import { getCategoryByUrlSlug } from "../../../db/getCategoryByUrlSlug.js";
-import { AdminTemplate } from "../../../template/AdminTemplate.js";
+import { getCategoryByUrlSlug } from "../../../db/admin/getCategoryByUrlSlug.js";
+import { AdminTemplate } from "../../../templates/AdminTemplate.js";
 
 export class PageAdminCategoriesEdit extends AdminTemplate {
     constructor(req) {
         super(req);
-        // this.pageJS = 'new-category';
+        this.pageJS = 'edit-category';
     }
 
     async main() {
         const data = await getCategoryByUrlSlug(this.req.params.urlSlug);
         const category = data[0];
+
+        if (!category) {
+            return `
+            <main>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <h1 class="display-5">Category not found</h1>
+                        </div>
+                    </div>
+                </div>
+            </main>`;
+        }
 
         return `
             <main>
@@ -23,6 +36,7 @@ export class PageAdminCategoriesEdit extends AdminTemplate {
                 <div class="container">
                     <div class="row">
                         <form class="col-12 col-md-9 col-lg-6">
+                            <input value="${category.url_slug}" type="text" id="original_url" hidden>
                             <div class="mb-3">
                                 <label for="title" class="form-label">Title</label>
                                 <input value="${category.title}" type="text" class="form-control" id="title" required>
