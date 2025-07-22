@@ -44,6 +44,7 @@ if (movieDetailsFormDOM) {
             url: urlDOM.value,
             category: +categoryDOM.value,
             status: '',
+            img: imagePathDOM.textContent,
         };
 
         if (descriptionDOM.value) {
