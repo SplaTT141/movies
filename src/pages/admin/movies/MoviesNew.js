@@ -27,7 +27,7 @@ export class PageAdminMoviesNew extends AdminTemplate {
                 <div class="container">
                     <div class="row">
                         <form class="col-12 col-md-9 col-lg-6 mb-5">
-                            <img id="img_preview" class="w-100 object-fit: contain" src="/img/default.png" alt="Movie thumbnail">
+                            <img id="img_preview" class="w-100 object-fit-contain" src="/img/default.png" alt="Movie thumbnail">
                             <p id="img_path">/img/default.png</p>
                             <input type="file" class="form-control" id="img" name="img">
                         </form>

@@ -18,7 +18,7 @@ const statusDraftDOM = document.getElementById('status_draft');
 if (movieImageFormDOM) {
     imageDOM.addEventListener('change', () => {
         const formData = new FormData();
-        formData.append('img', imageDOM.files[0])
+        formData.append("img", imageDOM.files[0]);
 
         fetch('/api/admin/upload-image', {
             method: 'POST',
@@ -76,7 +76,6 @@ if (movieDetailsFormDOM) {
         if (statusPublishedDOM.checked) {
             data.status = 'published';
         }
-
         if (statusDraftDOM.checked) {
             data.status = 'draft';
         }
